@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col, Accordion, Panel } from 'react-bootstrap';
 
-import Search from './google_search/google_search';
-import Calendar from './google_calendar/google_calendar';
-import Shortcut from './shortcut/shortcut';
+import Search from '../../components/google_search/google_search';
+import Calendar from '../../components/google_calendar/google_calendar';
+import Shortcut from '../../components/shortcut/shortcut';
 
 import './main.scss';
 

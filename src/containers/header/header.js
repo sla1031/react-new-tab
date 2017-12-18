@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-import Welcome from './welcome/welcome';
+import Welcome from '../../components/welcome/welcome';
 
 export default class Header extends React.Component {
   render() {
