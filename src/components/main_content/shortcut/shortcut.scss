@@ -1,0 +1,22 @@
+.shortcut-container {
+  float: left;
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #000;
+  overflow: hidden;
+
+  .title {
+    background-color: #000;
+  }
+
+  .image {
+    text-align: center;
+
+    img{
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+}
