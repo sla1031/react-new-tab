@@ -1,7 +1,7 @@
 Update `src/components/header/header.js` with a name
 Update `src/components/main_content/google_calendar/google_calendar.js` with
 Google Calendar iframe source.
-Update `src/components/main_content/main.js` with Shortcuts 
+Update `src/components/main_content/main.js` with Shortcuts
 
 
 
@@ -14,3 +14,7 @@ Build
 ```
 npm run build
 ```
+
+
+Background Image
+https://flic.kr/p/hY4Kyu
