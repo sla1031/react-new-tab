@@ -1,3 +1,6 @@
+$accent: #ccb747;
+$primary: #333;
+
 #root {
   color: #fff;
   background-color: #000;
@@ -5,43 +8,48 @@
   background-position: top center;
   background-size: cover;
 }
+a {
+  color: $accent;
 
+  &:hover {
+    color: lighten($accent, 30%);
+  }
+}
 .btn-default {
   color: #fff;
-  background-color: #333;
+  background-color: $primary;
   border-color: #000;
 
   &:hover {
     color: #fff;
-    background-color: #3c3b3b;
-    border-color: #000;
+    background-color: lighten($primary, 10%);
+    border-color: darken($primary, 30%);
   }
 }
 
-.form-control {
-  border-color: #000;
+button {
+  background: transparent;
+  border: 0px;
+  color: $accent;
 }
 
+.form-control {
+  border-color:  darken($primary, 30%);
+}
+
+/* header */
 
 /* main */
 .main-content-container {
-  margin-top: 120px;
+  .panel {
+    border-color: #000;
+    background-color: #ffffff80;
+  }
 
-  .accordion-container {
-    margin-top: 50px;
-
-    .panel-group {
-      .panel {
-        border-color: #000;
-        background-color: #ffffff80;
-      }
-
-      .panel-heading {
-        color: #fff;
-        background-color: #333;
-        border-color: #333;
-      }
-    }
+  .panel-heading {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
   }
 }
 

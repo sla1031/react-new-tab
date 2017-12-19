@@ -8,9 +8,9 @@ export default class Welcome extends React.Component {
   render() {
     return (
       <div className="welcome-container">
-        <div className="message">
+        <h4 className="message">
           Welcome {this.props.name}
-        </div>
+        </h4>
         <div className="time">
           <Clock
             format="dddd, MMMM Mo, YYYY, h:mm:ss A"

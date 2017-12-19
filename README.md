@@ -1,9 +1,13 @@
-Update `src/containers/header/header.js` with a name\
+Update `src/containers/header/headerContainer.js` with a name
 
-Update `src/components/google_calendar/google_calendar.js` with
+Update `src/components/googleCalendar/googleCalendar.js` with
 Google Calendar iframe source.
 
-Update `src/containers/main_content/main.js` with Shortcuts
+Update `src/containers/maiContent/main.js` with Shortcuts
+
+Update `src/containers/weatherContainer/weatherContainer.js` with api key, city,
+state, zip code from
+https://www.wunderground.com/weather/api/d/docs?d=data/forecast&MR=1
 
 Basic structure
 ```

@@ -1,0 +1,15 @@
+.weather-container {
+  .condition-icon {
+    float: left;
+    margin: 0 10px 10px 0;
+  }
+  .forecast-text {
+    &.forecast-long {
+      float: left;
+    }
+  }
+  .weather-toggle {
+    margin: 0 5px;
+    padding: 0px;
+  }
+}

@@ -18,7 +18,7 @@ render(LayoutContainer);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/layout', () => {
+  module.hot.accept('./containers/layoutContainer', () => {
     render(LayoutContainer);
   });
 }
