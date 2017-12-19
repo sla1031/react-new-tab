@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Clearfix } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/style.scss';
 import '../styles/index.scss';
 
 import Header from './header/header';

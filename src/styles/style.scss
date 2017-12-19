@@ -1,0 +1,57 @@
+#root {
+  color: #fff;
+  background-color: #000;
+  background-image: url('../img/11136163936_d847a958bd_o.jpg');
+  background-position: top center;
+  background-size: cover;
+}
+
+.btn-default {
+  color: #fff;
+  background-color: #333;
+  border-color: #000;
+
+  &:hover {
+    color: #fff;
+    background-color: #3c3b3b;
+    border-color: #000;
+  }
+}
+
+.form-control {
+  border-color: #000;
+}
+
+
+/* main */
+.main-content-container {
+  margin-top: 120px;
+
+  .accordion-container {
+    margin-top: 50px;
+
+    .panel-group {
+      .panel {
+        border-color: #000;
+        background-color: #ffffff80;
+      }
+
+      .panel-heading {
+        color: #fff;
+        background-color: #333;
+        border-color: #333;
+      }
+    }
+  }
+}
+
+
+/* shortcut */
+.shortcut-container {
+  background-color: #fff;
+  border: 1px solid #000;
+
+  .title {
+    background-color: #000;
+  }
+}
