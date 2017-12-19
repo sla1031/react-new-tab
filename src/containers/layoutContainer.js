@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/style.scss';
 import '../styles/index.scss';
 
-import Header from './header/header';
-import MainContent from './main_content/main';
+import HeaderContainer from './header/headerContainer';
+import MainContentContainer from './mainContent/mainContainer';
 
 export default class Layout extends React.Component {
   render() {
@@ -15,8 +15,8 @@ export default class Layout extends React.Component {
         <Grid
           fluid
         >
-          <Header />
-          <MainContent />
+          <HeaderContainer />
+          <MainContentContainer />
         </Grid>
         <Clearfix />
       </div>

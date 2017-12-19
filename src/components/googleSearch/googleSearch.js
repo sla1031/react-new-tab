@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, FormGroup, Button, InputGroup } from 'react-bootstrap';
 
-import './google_search.scss';
+import './googleSearch.scss';
 
 export default class GoogleSearch extends React.Component {
   constructor(props) {

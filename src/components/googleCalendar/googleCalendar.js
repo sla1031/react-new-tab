@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './google_calendar.scss';
+import './googleCalendar.scss';
 
 export default class GoogleSearch extends React.Component {
   render() {

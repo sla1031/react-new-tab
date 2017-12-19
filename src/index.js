@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import Layout from './containers/layout';
+import LayoutContainer from './containers/layoutContainer';
 
 
 const render = (Component) => {
@@ -14,11 +14,11 @@ const render = (Component) => {
   );
 };
 
-render(Layout);
+render(LayoutContainer);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./containers/layout', () => {
-    render(Layout);
+    render(LayoutContainer);
   });
 }

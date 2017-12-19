@@ -1,13 +1,13 @@
 import React from 'react';
 import { Row, Col, Accordion, Panel } from 'react-bootstrap';
 
-import Search from '../../components/google_search/google_search';
-import Calendar from '../../components/google_calendar/google_calendar';
+import Search from '../../components/googleSearch/googleSearch';
+import Calendar from '../../components/googleCalendar/googleCalendar';
 import Shortcut from '../../components/shortcut/shortcut';
 
 import './main.scss';
 
-export default class MainContent extends React.Component {
+export default class MainContentContainer extends React.Component {
   render() {
     return (
       <Row className="main-content-container">

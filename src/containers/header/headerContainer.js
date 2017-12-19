@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import Welcome from '../../components/welcome/welcome';
 
-export default class Header extends React.Component {
+export default class HeaderContainer extends React.Component {
   render() {
     return (
       <Row>
