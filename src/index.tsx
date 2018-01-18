@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import LayoutContainer from './containers/layoutContainer';
@@ -16,8 +16,8 @@ const render = (Component) => {
 render(LayoutContainer);
 
 // Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./containers/layoutContainer', () => {
+if ((module as any).hot) {
+  (module as any).hot.accept('./containers/layoutContainer', () => {
     render(LayoutContainer);
   });
 }

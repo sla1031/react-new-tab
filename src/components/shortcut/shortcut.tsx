@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import * as React from 'react';
 
 import './shortcut.scss';
 
-export default class Shortcut extends React.Component {
+interface Props {
+  url: string;
+  title: string;
+  imgSrc: string;
+}
+
+export default class Shortcut extends React.Component<Props, {}> {
   render() {
     return (
       <div className="shortcut-container">
@@ -25,9 +29,3 @@ export default class Shortcut extends React.Component {
     );
   }
 }
-
-Shortcut.propTypes = {
-  title: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};

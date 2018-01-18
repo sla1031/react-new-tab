@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Row, Col, Accordion, Panel } from 'react-bootstrap';
 
 import Search from '../../components/googleSearch/googleSearch';
@@ -48,12 +48,19 @@ export default class MainContentContainer extends React.Component {
         <Col xs={6} xsOffset={3}>
           <Search />
           <Panel header="Weather" collapsible defaultExpanded eventKey="0">
-            <WeatherContainer />
+            <WeatherContainer
+              apiKey={CONFIG.WEATHER.apiKey}
+              locationState={CONFIG.WEATHER.locationState}
+              locationCity={CONFIG.WEATHER.locationCity}
+              locationZip={CONFIG.WEATHER.locationZip}
+            />
           </Panel>
           <div className="accordion-container">
             <Accordion defaultActiveKey="1">
               <Panel defaultExpanded header="Google Calendar" eventKey="1">
-                <Calendar />
+                <Calendar
+                  calendarSrc={CONFIG.GOOGLE_CALENDAR_SRC}
+                />
               </Panel>
               {shortcutPanels}
             </Accordion>

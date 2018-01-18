@@ -1,9 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { FormControl, FormGroup, Button, InputGroup } from 'react-bootstrap';
 
 import './googleSearch.scss';
 
-export default class GoogleSearch extends React.Component {
+interface State {
+    searchValue: string | null;
+}
+
+export default class GoogleSearch extends React.Component<{}, State> {
   constructor(props) {
     super(props);
     this.state = {

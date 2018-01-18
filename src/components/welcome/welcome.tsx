@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Clock from 'react-live-clock';
+import * as React from 'react';
+import * as Clock from 'react-live-clock';
 
 import './welcome.scss';
 
-export default class Welcome extends React.Component {
+interface Props {
+  name: string;
+}
+
+export default class Welcome extends React.Component<Props, {}> {
   render() {
     return (
       <div className="welcome-container">
@@ -21,11 +24,3 @@ export default class Welcome extends React.Component {
     );
   }
 }
-
-Welcome.propTypes = {
-  name: PropTypes.string,
-};
-
-Welcome.defaultProps = {
-  name: '',
-};

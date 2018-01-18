@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Grid, Clearfix } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';

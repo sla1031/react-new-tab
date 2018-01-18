@@ -15,7 +15,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    `${APP_DIR}/index.js`,
+    `${APP_DIR}/index.tsx`,
   ],
   plugins: [
     new CleanWebpackPlugin([BUILD_DIR]),
@@ -44,22 +44,19 @@ module.exports = {
     contentBase: BUILD_DIR,
     hot: true,
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   module: {
     rules: [
       {
-        test: /\.json$/,
-        loader: 'json-loader',
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['react', 'env'],
-            plugins: ['react-hot-loader/babel'],
-          },
-        },
+        test: /\.json$/,
+        loader: 'json-loader',
       },
       {
         test: /\.s?css$/,

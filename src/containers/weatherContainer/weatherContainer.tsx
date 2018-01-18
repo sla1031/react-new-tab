@@ -1,39 +1,83 @@
-import React from 'react';
+import * as React from 'react';
 
 import Weather from '../../components/weather/weather';
 
 const CONFIG = require('../../../config.json');
 
-export default class WeatherContainer extends React.Component {
-  static checkStatus(response) {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response;
-  }
-  constructor() {
-    super();
+interface Temperature {
+  fahrenheit: number;
+}
+
+interface LiquidMeasurement {
+  in: number;
+}
+
+interface Forecast {
+  fcttext: string;
+  icon_url: string;
+}
+
+interface SpeedMeasurement {
+  mph: number;
+}
+
+interface SimpleForecast {
+  conditions: string;
+  high: Temperature;
+  low: Temperature;
+  snow_allday: LiquidMeasurement;
+  qpf_allday: LiquidMeasurement;
+  avewind: SpeedMeasurement;
+  maxwind: SpeedMeasurement;
+}
+
+interface CurrentForecast {
+  icon_url: string;
+  weather: string;
+  temp_f: number;
+  feelslike_f: number;
+}
+
+interface Props{
+  apiKey: string;
+  locationState: string;
+  locationCity: string;
+  locationZip: number;
+}
+
+interface State {
+  isLoadingCurrent: boolean;
+  isLoadingForecast: boolean;
+  isError: boolean;
+  txtForecast?: Forecast;
+  simpleForecast?: SimpleForecast;
+  current?: CurrentForecast;
+}
+
+export default class WeatherContainer extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     // https://www.wunderground.com/weather/api/d/docs?d=data/forecast&MR=1
-    this.apiKey = CONFIG.WEATHER.apiKey;
-    this.locationState = CONFIG.WEATHER.locationState;
-    this.locationCity = CONFIG.WEATHER.locationCity;
-    this.locationZip = CONFIG.WEATHER.locationZip;
 
     this.state = {
       isLoadingCurrent: true,
       isLoadingForecast: true,
       isError: false,
-      txtForecast: [],
-      simpleForecast: [],
-      current: [],
     };
   }
 
+  checkStatus(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   componentDidMount() {
-    const urlCurrent = `http://api.wunderground.com/api/${this.apiKey}/conditions/q/${this.locationState}/${this.locationCity}/${this.locationZip}.json`;
+    const urlCurrent = `http://api.wunderground.com/api/${this.props.apiKey}/conditions/q/${this.props.locationState}/${this.props.locationCity}/${this.props.locationZip}.json`;
 
     fetch(urlCurrent)
-      .then(this.checkStatus)
+      .then(response => this.checkStatus((response)))
       .then(results => results.json())
       .then((data) => {
         console.log(data);
@@ -48,13 +92,14 @@ export default class WeatherContainer extends React.Component {
       })
       .catch((error) => {
         console.log(`error ${error}`);
-        this.setState = ({
+        this.setState((state: State) => ({
+          ...state,
           isLoadingCurrent: false,
           isError: true,
-        });
+        }));
       });
 
-    const urlForecast = `http://api.wunderground.com/api/${this.apiKey}/forecast/q/${this.locationState}/${this.locationCity}/${this.locationZip}.json`;
+    const urlForecast = `http://api.wunderground.com/api/${this.props.apiKey}/forecast/q/${this.props.locationState}/${this.props.locationCity}/${this.props.locationZip}.json`;
 
     fetch(urlForecast)
       .then(this.checkStatus)
@@ -66,18 +111,20 @@ export default class WeatherContainer extends React.Component {
         if (!txtForecast || !simpleForecast || data.error) {
           throw new Error();
         }
-        this.setState({
+        this.setState((state: State) => ({
+          ...state,
           txtForecast,
           simpleForecast,
           isLoadingForecast: false,
-        });
+        }));
       })
       .catch((error) => {
         console.log(`error ${error}`);
-        this.setState = ({
+        this.setState((state: State) => ({
+          ...state,
           isLoadingForecast: false,
           isError: true,
-        });
+        }));
       });
   }
 

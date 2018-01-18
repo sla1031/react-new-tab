@@ -1,11 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import * as React from 'react';
 
 import './weather.scss';
 
-export default class Weather extends React.Component {
-  constructor(props) {
+
+interface Forecast {
+  iconUrl: string;
+  condition: string;
+  high: number;
+  low: number;
+  snow: number;
+  rain: number;
+  wind: number;
+  windGust: number;
+}
+
+interface CurrentForecast {
+  iconUrl: string;
+  condition: string;
+  temperature: number;
+  feelsLike: number;
+}
+
+interface Props {
+  current: CurrentForecast;
+  forecastText: string;
+  forecast: Forecast;
+}
+
+interface State {
+  weatherSimple: boolean;
+  img: string;
+}
+
+export default class Weather extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       weatherSimple: true,
@@ -99,9 +127,3 @@ export default class Weather extends React.Component {
     );
   }
 }
-
-Weather.propTypes = {
-  forecastText: PropTypes.string.isRequired,
-  forecast: PropTypes.object.isRequired,
-  current: PropTypes.object.isRequired,
-};
