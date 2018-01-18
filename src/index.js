@@ -4,7 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 
 import LayoutContainer from './containers/layoutContainer';
 
-
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>

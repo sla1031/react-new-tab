@@ -9,6 +9,9 @@ const APP_DIR = path.resolve(__dirname, 'src');
 
 
 module.exports = {
+  node: {
+    fs: 'empty',
+  },
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
@@ -34,6 +37,7 @@ module.exports = {
     path: BUILD_DIR,
     filename: 'bundle.js',
     publicPath: '/',
+    // publicPath: '/~samantha/homepage/build/'
   },
   devtool: 'source-map',
   devServer: {
@@ -42,6 +46,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,

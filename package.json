@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "http://localhost/~samantha/homepage/build/",
   "main": "src/index.js",
+  "files": [
+    "config.json"
+  ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
@@ -40,6 +43,7 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
+    "json-loader": "^0.5.7",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"

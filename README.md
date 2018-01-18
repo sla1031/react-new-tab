@@ -1,20 +1,26 @@
-Update `src/containers/header/headerContainer.js` with a name
+Config Variables
+`cp config_template.json config.json`
 
-Update `src/components/googleCalendar/googleCalendar.js` with
-Google Calendar iframe source.
+WELCOME_NAME for
+`src/containers/header/headerContainer.js`
 
-Update `src/containers/maiContent/main.js` with Shortcuts
+GOOGLE_CALENDAR_SRC for
+`src/components/googleCalendar/googleCalendar.js` - Google Calendar iframe source.
 
-Update `src/containers/weatherContainer/weatherContainer.js` with api key, city,
-state, zip code from
+SHORTCUT_ARRAY for
+`src/containers/maiContent/main.js`
+
+WEATHER for
+`src/containers/weatherContainer/weatherContainer.js` -
 https://www.wunderground.com/weather/api/d/docs?d=data/forecast&MR=1
+
 
 Basic structure
 ```
 https://daveceddia.com/react-project-structure/
 ```
 
-Hot reloading with webpack (doesn't quite work)
+Hot reloading with webpack 
 ```
 npm run start
 ```

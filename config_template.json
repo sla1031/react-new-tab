@@ -1,0 +1,22 @@
+{
+  "WELCOME_NAME":"",
+  "GOOGLE_CALENDAR_SRC":"",
+  "WEATHER": {
+    "apiKey": "",
+    "locationState": "",
+    "locationCity":"",
+    "locationZip":""
+  },
+  "SHORTCUT_ARRAY":[
+    {
+      "panelName":"",
+      "shortcuts":[
+        {
+          "title":"",
+          "image":"",
+          "url":""
+        }
+      ]
+    }
+  ]
+}

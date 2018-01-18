@@ -9,6 +9,7 @@ export default class Weather extends React.Component {
     super(props);
     this.state = {
       weatherSimple: true,
+      img: this.props.current.iconUrl,
     };
 
     this.handleToggleClick = this.handleToggleClick.bind(this);
@@ -17,37 +18,41 @@ export default class Weather extends React.Component {
   getWeatherSimple() {
     return (
       <span>
+        Currently {this.props.current.condition},{ ' ' }
+        with temperature of {this.props.current.temperature}&deg;,{ ' ' }
+        feels like {this.props.current.feelsLike}&deg;<br />
         {this.props.forecastText}
       </span>
     );
   }
 
   getWeatherLong() {
+    const { forecast } = this.props;
     return (
       <div>
         <div>
-          <span>Conditions: </span>
-          <span>{this.props.conditions}</span>
+          <span>condition: </span>
+          <span>{forecast.condition}</span>
         </div>
         <div>
           <span>High: </span>
-          <span>{this.props.high}&deg;</span>
+          <span>{forecast.high}&deg;</span>
         </div>
         <div>
           <span>Low: </span>
-          <span>{this.props.low}&deg;</span>
+          <span>{forecast.low}&deg;</span>
         </div>
         <div>
-          <span>{(this.props.snow > 0) ? 'Snow' : 'Rain'}:  </span>
-          <span>{(this.props.snow > 0) ? this.props.snow : this.props.rain} in</span>
+          <span>{(forecast.snow > 0) ? 'Snow' : 'Rain'}:  </span>
+          <span>{(forecast.snow > 0) ? forecast.snow : forecast.rain} in</span>
         </div>
         <div>
           <span>Wind: </span>
           <span>
-            {this.props.wind} mph
+            {forecast.wind} mph
             {
-              (this.props.windGust > 0) ?
-              `, reaching ${this.props.windGust} mph` :
+              (forecast.windGust > 0) ?
+              `, reaching ${forecast.windGust} mph` :
               ''
             }
           </span>
@@ -59,6 +64,7 @@ export default class Weather extends React.Component {
   handleToggleClick() {
     this.setState({
       weatherSimple: !this.state.weatherSimple,
+      img: (this.state.weatherSimple) ? this.props.forecast.iconUrl : this.props.current.iconUrl,
     });
   }
 
@@ -74,8 +80,10 @@ export default class Weather extends React.Component {
         <div>
           <img
             className="condition-icon"
-            src={this.props.iconUrl}
-            alt={this.props.conditions}
+            src={this.state.img}
+            alt={(this.state.weatherSimple) ?
+              this.props.current.condition :
+              this.props.forecast.condition}
           />
           <div className={`forecast-text ${forecastClassName}`}>
             {weatherText}
@@ -83,7 +91,7 @@ export default class Weather extends React.Component {
               className="weather-toggle"
               onClick={this.handleToggleClick}
             >
-              {(this.state.weatherSimple) ? 'more' : 'less'}...
+              {(this.state.weatherSimple) ? 'see forecast' : 'see current'}...
             </button>
           </div>
         </div>
@@ -93,22 +101,7 @@ export default class Weather extends React.Component {
 }
 
 Weather.propTypes = {
-  iconUrl: PropTypes.string,
   forecastText: PropTypes.string.isRequired,
-  conditions: PropTypes.string.isRequired,
-  high: PropTypes.number.isRequired,
-  low: PropTypes.number.isRequired,
-  snow: PropTypes.number,
-  rain: PropTypes.number,
-  wind: PropTypes.number,
-  windGust: PropTypes.number,
-};
-
-
-Weather.defaultProps = {
-  iconUrl: 'https://icons.wxug.com/i/w/layout/logo-responsive.png',
-  snow: 0,
-  rain: 0,
-  wind: 0,
-  windGust: 0,
+  forecast: PropTypes.object.isRequired,
+  current: PropTypes.object.isRequired,
 };
