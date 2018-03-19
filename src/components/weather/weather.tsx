@@ -1,7 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import './weather.scss';
-
+import "./weather.scss";
 
 interface Forecast {
   iconUrl: string;
@@ -46,8 +45,8 @@ export default class Weather extends React.Component<Props, State> {
   getWeatherSimple() {
     return (
       <span>
-        Currently {this.props.current.condition},{ ' ' }
-        with temperature of {this.props.current.temperature}&deg;,{ ' ' }
+        Currently {this.props.current.condition},{" "}
+        with temperature of {this.props.current.temperature}&deg;,{" "}
         feels like {this.props.current.feelsLike}&deg;<br />
         {this.props.forecastText}
       </span>
@@ -71,7 +70,7 @@ export default class Weather extends React.Component<Props, State> {
           <span>{forecast.low}&deg;</span>
         </div>
         <div>
-          <span>{(forecast.snow > 0) ? 'Snow' : 'Rain'}:  </span>
+          <span>{(forecast.snow > 0) ? "Snow" : "Rain"}:  </span>
           <span>{(forecast.snow > 0) ? forecast.snow : forecast.rain} in</span>
         </div>
         <div>
@@ -81,7 +80,7 @@ export default class Weather extends React.Component<Props, State> {
             {
               (forecast.windGust > 0) ?
               `, reaching ${forecast.windGust} mph` :
-              ''
+              ""
             }
           </span>
         </div>
@@ -101,8 +100,8 @@ export default class Weather extends React.Component<Props, State> {
       this.getWeatherSimple() :
       this.getWeatherLong();
     const forecastClassName = (this.state.weatherSimple) ?
-      'forecast-short' :
-      'forecast-long';
+      "forecast-short" :
+      "forecast-long";
     return (
       <div className="weather-container">
         <div>
@@ -119,7 +118,7 @@ export default class Weather extends React.Component<Props, State> {
               className="weather-toggle"
               onClick={this.handleToggleClick}
             >
-              {(this.state.weatherSimple) ? 'see forecast' : 'see current'}...
+              {(this.state.weatherSimple) ? "see forecast" : "see current"}...
             </button>
           </div>
         </div>

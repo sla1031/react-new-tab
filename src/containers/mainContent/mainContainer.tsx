@@ -1,20 +1,19 @@
-import * as React from 'react';
-import { Row, Col, Accordion, Panel } from 'react-bootstrap';
+import * as React from "react";
+import { Row, Col, Accordion, Panel } from "react-bootstrap";
 
-import Search from '../../components/googleSearch/googleSearch';
-import Calendar from '../../components/googleCalendar/googleCalendar';
-import Shortcut from '../../components/shortcut/shortcut';
-import WeatherContainer from '../weatherContainer/weatherContainer';
+import Search from "../../components/googleSearch/googleSearch";
+import Calendar from "../../components/googleCalendar/googleCalendar";
+import Shortcut from "../../components/shortcut/shortcut";
+import WeatherContainer from "../weatherContainer/weatherContainer";
 
-import './main.scss';
+import "./main.scss";
 
-const CONFIG = require('../../../config.json');
+const CONFIG = require("../../../config.json");
 
 export default class MainContentContainer extends React.Component {
   render() {
     const shortcutPanels = [];
     let i = 0;
-    console.log(CONFIG.SHORTCUT_ARRAY);
     const panels = CONFIG.SHORTCUT_ARRAY;
     const panelsLen = panels.length;
 
@@ -26,28 +25,32 @@ export default class MainContentContainer extends React.Component {
 
       for (j; j < shortcutLen; j += 1) {
         const shortcutKey = `${panels[i].panelName}-${shortcuts[j].title}`;
-        thisShortcuts.push(<Shortcut
-          key={shortcutKey}
-          title={shortcuts[j].title} // title for Shortcut
-          imgSrc={shortcuts[j].image} // shortcut image url
-          url={shortcuts[j].url} // url shortcut should go to
-        />);
+        thisShortcuts.push((
+          <Shortcut
+            key={shortcutKey}
+            title={shortcuts[j].title} // title for Shortcut
+            imgSrc={shortcuts[j].image} // shortcut image url
+            url={shortcuts[j].url} // url shortcut should go to
+          />
+        ));
       }
-      shortcutPanels.push(<Panel
-        defaultExpanded
-        header={panels[i].panelName}
-        eventKey={(i + 2)}
-        key={panels[i].panelName}
-      >
-        {thisShortcuts}
-      </Panel>);
+      shortcutPanels.push((
+        <Panel
+          defaultExpanded={false}
+          header={panels[i].panelName}
+          eventKey={(i + 2)}
+          key={panels[i].panelName}
+        >
+          {thisShortcuts}
+        </Panel>
+      ));
     }
 
     return (
       <Row className="main-content-container">
         <Col xs={6} xsOffset={3}>
           <Search />
-          <Panel header="Weather" collapsible defaultExpanded eventKey="0">
+          <Panel header="Weather" collapsible={true} defaultExpanded={true} eventKey="0">
             <WeatherContainer
               apiKey={CONFIG.WEATHER.apiKey}
               locationState={CONFIG.WEATHER.locationState}
@@ -57,7 +60,7 @@ export default class MainContentContainer extends React.Component {
           </Panel>
           <div className="accordion-container">
             <Accordion defaultActiveKey="1">
-              <Panel defaultExpanded header="Google Calendar" eventKey="1">
+              <Panel defaultExpanded={true} header="Google Calendar" eventKey="1">
                 <Calendar
                   calendarSrc={CONFIG.GOOGLE_CALENDAR_SRC}
                 />

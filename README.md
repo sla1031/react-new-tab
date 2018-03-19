@@ -20,14 +20,14 @@ Basic structure
 https://daveceddia.com/react-project-structure/
 ```
 
-Hot reloading with webpack 
+Hot reloading with webpack
 ```
-npm run start
+yarn run start
 ```
 
 Build
 ```
-npm run build
+yarn run build
 ```
 
 

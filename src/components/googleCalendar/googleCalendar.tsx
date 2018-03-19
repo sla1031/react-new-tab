@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import './googleCalendar.scss';
+import "./googleCalendar.scss";
 
 interface Props {
   calendarSrc: string;

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as Clock from 'react-live-clock';
+import * as React from "react";
+import * as Clock from "react-live-clock";
 
-import './welcome.scss';
+import "./welcome.scss";
 
 interface Props {
   name: string;
@@ -17,7 +17,7 @@ export default class Welcome extends React.Component<Props, {}> {
         <div className="time">
           <Clock
             format="dddd, MMMM Mo, YYYY, h:mm:ss A"
-            ticking
+            ticking={true}
           />
         </div>
       </div>

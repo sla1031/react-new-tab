@@ -1,26 +1,35 @@
-import * as React from 'react';
-import { FormControl, FormGroup, Button, InputGroup } from 'react-bootstrap';
+import * as React from "react";
+import { FormControl, FormGroup, Button, InputGroup } from "react-bootstrap";
 
-import './googleSearch.scss';
+import "./googleSearch.scss";
 
 interface State {
     searchValue: string | null;
 }
 
+interface MyEventTarget extends EventTarget {
+    value: string;
+}
+
+interface MyFormEvent {
+    target: MyEventTarget;
+}
+
 export default class GoogleSearch extends React.Component<{}, State> {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super({}, {});
     this.state = {
-      searchValue: '',
+      searchValue: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-  handleSubmit(event) {
+  handleSubmit(event: any) {
     event.preventDefault();
-    window.open(`https://www.google.com/search?q=${encodeURI(this.state.searchValue)}`, '_self');
+    window.open(`https://www.google.com/search?q=${encodeURI(this.state.searchValue)}`, "_self");
   }
-  handleChange(event) {
+  handleChange(event: MyFormEvent) {
+    console.log(event);
     this.setState({
       searchValue: event.target.value,
     });

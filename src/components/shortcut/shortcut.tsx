@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import './shortcut.scss';
+import "./shortcut.scss";
 
 interface Props {
   url: string;

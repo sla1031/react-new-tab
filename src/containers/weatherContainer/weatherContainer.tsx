@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Weather from '../../components/weather/weather';
+import Weather from "../../components/weather/weather";
 
-const CONFIG = require('../../../config.json');
+const CONFIG = require("../../../config.json");
 
 interface Temperature {
   fahrenheit: number;
@@ -38,7 +38,7 @@ interface CurrentForecast {
   feelslike_f: number;
 }
 
-interface Props{
+interface Props {
   apiKey: string;
   locationState: string;
   locationCity: string;
@@ -54,6 +54,19 @@ interface State {
   current?: CurrentForecast;
 }
 
+interface Response {
+  body: any;
+  bodyUsed: boolean;
+  headers: any;
+  ok: boolean;
+  redirected: boolean;
+  status: number;
+  statusText: string;
+  type: string;
+  url: string;
+  json: any;
+}
+
 export default class WeatherContainer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -66,7 +79,7 @@ export default class WeatherContainer extends React.Component<Props, State> {
     };
   }
 
-  checkStatus(response) {
+  checkStatus(response: Response) {
     if (!response.ok) {
       throw Error(response.statusText);
     }
@@ -80,7 +93,6 @@ export default class WeatherContainer extends React.Component<Props, State> {
       .then(response => this.checkStatus((response)))
       .then(results => results.json())
       .then((data) => {
-        console.log(data);
         const current = data.current_observation;
         if (!current || data.error) {
           throw new Error();
@@ -91,12 +103,10 @@ export default class WeatherContainer extends React.Component<Props, State> {
         });
       })
       .catch((error) => {
-        console.log(`error ${error}`);
-        this.setState((state: State) => ({
-          ...state,
+        this.setState({
           isLoadingCurrent: false,
           isError: true,
-        }));
+        });
       });
 
     const urlForecast = `http://api.wunderground.com/api/${this.props.apiKey}/forecast/q/${this.props.locationState}/${this.props.locationCity}/${this.props.locationZip}.json`;
@@ -105,26 +115,22 @@ export default class WeatherContainer extends React.Component<Props, State> {
       .then(this.checkStatus)
       .then(results => results.json())
       .then((data) => {
-        console.log(data);
         const txtForecast = data.forecast.txt_forecast.forecastday[0];
         const simpleForecast = data.forecast.simpleforecast.forecastday[0];
         if (!txtForecast || !simpleForecast || data.error) {
           throw new Error();
         }
-        this.setState((state: State) => ({
-          ...state,
+        this.setState({
           txtForecast,
           simpleForecast,
           isLoadingForecast: false,
-        }));
+        });
       })
       .catch((error) => {
-        console.log(`error ${error}`);
-        this.setState((state: State) => ({
-          ...state,
+        this.setState({
           isLoadingForecast: false,
           isError: true,
-        }));
+        });
       });
   }
 
