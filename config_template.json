@@ -1,4 +1,5 @@
 {
+  "SENTRY_DSN": "",
   "WELCOME_NAME":"",
   "GOOGLE_CALENDAR_SRC":"",
   "WEATHER": {

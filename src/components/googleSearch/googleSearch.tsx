@@ -16,8 +16,8 @@ interface MyFormEvent {
 }
 
 export default class GoogleSearch extends React.Component<{}, State> {
-  constructor() {
-    super({}, {});
+  constructor(props) {
+    super(props, {});
     this.state = {
       searchValue: "",
     };
@@ -29,7 +29,6 @@ export default class GoogleSearch extends React.Component<{}, State> {
     window.open(`https://www.google.com/search?q=${encodeURI(this.state.searchValue)}`, "_self");
   }
   handleChange(event: MyFormEvent) {
-    console.log(event);
     this.setState({
       searchValue: event.target.value,
     });
